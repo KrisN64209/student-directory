@@ -13,12 +13,14 @@ def input_students
 
 def print_header
   puts "The Students of Villains Academy"
-  puts "------------"
+  puts "-----------"
 end
 
 def print(students)
-  students.each {|student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  students.each.with_index {|student, index|
+    if student[:name].downcase.start_with?("k")
+    puts "#{index+1}.#{student[:name]} (#{student[:cohort]} cohort)"
+  end
   }
 end
 
