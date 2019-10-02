@@ -5,7 +5,7 @@ def input_students
   student_getter = ask_questions()
    while !student_getter[:name].empty? do
     students << student_getter
-    puts "Now we have #{students.count} students"
+    puts "Now we have #{students.count} #{students.count===1? "student":"students"}"
     student_getter = ask_questions()
    end
  students
@@ -45,6 +45,10 @@ def print_using_while(students)
   end
 end
 
+def print_sorted_by_cohort(students)
+  students.sort_by { |student| student[:cohort]}.map { |student| puts "#{student[:name]}, #{student[:cohort]}"   }
+end
+
 
 def print(students)
   students.each.with_index {|student, index|
@@ -59,10 +63,10 @@ def print(students)
 end
 
 def print_footer(names)
-puts "Overall, we have #{names.count} great students"
+puts "Overall, we have #{names.count} great #{names.count===1? "student":"students"}"
 end
 
 students = input_students
 print_header
-print(students)
+print_sorted_by_cohort(students)
 print_footer(students)
