@@ -12,18 +12,24 @@ def input_students
  end
 
  def ask_questions
+   cohort_list = ["February", "April", "November"]
    puts "Please enter the name of the next student"
    name = gets.chomp
-   return {name: "", height: "", country_of_birth: "", hobbies: "", cohort: :november} if name.empty?
+   return {name: "", height: "", country_of_birth: "", hobbies: "", cohort: ""} if name.empty?
    puts "Please enter the height of the student"
    height = gets.chomp
    puts "Please enter the student's hobbies"
    hobbies = gets.chomp
    puts "Please enter the student's country of birth"
    country_of_birth = gets.chomp
-   student={name: name, height: height, country_of_birth: country_of_birth, hobbies: hobbies, cohort: :november}
+   puts "Please enter the student's cohort"
+   cohort = gets.chomp
+   cohort_vailidator = !cohort.empty? && cohort_list.include?(cohort) ? cohort : "Unknown"
+   student={name: name, height: height, country_of_birth: country_of_birth, hobbies: hobbies, cohort: cohort_vailidator}
    return student
  end
+
+
 
 
 def print_header
@@ -47,7 +53,7 @@ def print(students)
     puts "#{student[:height]}" .center(18)
     puts "#{student[:country_of_birth]}" .center(18)
     puts "#{student[:hobbies]}" .center(18)
-    puts "(#{student[:cohort]} cohort)" .center(18)
+    puts "#{student[:cohort]}" .center(18)
   end
   }
 end
