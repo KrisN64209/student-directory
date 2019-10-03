@@ -3,7 +3,7 @@ def input_students
   puts "Please enter the details of the students"
   puts "To finish, just hit return twice after completing a students information"
   student_getter = ask_questions()
-   while !student_getter[:name].empty? do
+  while !student_getter[:name].empty? do
     students << student_getter
     puts "Now we have #{students.count} #{students.count===1? "student":"students"}"
     student_getter = ask_questions()
@@ -67,6 +67,10 @@ puts "Overall, we have #{names.count} great #{names.count===1? "student":"studen
 end
 
 students = input_students
+
+if students.count>0
 print_header
 print_sorted_by_cohort(students)
 print_footer(students)
+else puts "ERROR! You have not entered any students!"
+end
